@@ -36,4 +36,6 @@ def main():
   model = ConvNet((img_width,img_height,3))
   model.fit_generator(train_generator, steps_per_epoch= 40 // batch_size, epochs=10 )
 
-main()
+  
+if __name__ == '__main__':
+  main()
