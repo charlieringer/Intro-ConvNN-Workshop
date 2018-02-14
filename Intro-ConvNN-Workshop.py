@@ -14,7 +14,7 @@ def ConvNet(shape):
   layers = Dense(32, activation='relu')(layers)
   layers = Dense(2, activation='softmax')(layers)
   model = Model(model_input, layers)
-  model.compile(optimizer='adadelta', loss='binary_crossentropy', metrics=['accuracy'])
+  model.compile(optimizer='adadelta', loss='categorical_crossentropy', metrics=['accuracy'])
   return model
 #Builds a data generator for the supplied dir
 def getDataGenerator(_dir,  img_width, img_height, batch_size):
@@ -29,12 +29,12 @@ def main():
   img_height = 150
   #Get a data generator for the train data
   train_generator = getDataGenerator("data/train", img_width, img_height, batch_size)
-  validate_generator = getDataGenerator("data/validation", img_width, img_height, batch_size)
+  test_generator = getDataGenerator("data/test", img_width, img_height, batch_size)
   #Initalise a model
   model = ConvNet((img_width,img_height,3))
   #Fit the data to the model
   model.fit_generator(train_generator, steps_per_epoch= (40 // batch_size), epochs=10 )
-  model.evaluate_generator(validate_generator)
+  print("Accuracy on Test Data: %f" %(model.evaluate_generator(test_generator)[1]))
 
 if __name__ == '__main__':
   main()
