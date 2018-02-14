@@ -29,10 +29,12 @@ def main():
   img_height = 150
   #Get a data generator for the train data
   train_generator = getDataGenerator("data/train", img_width, img_height, batch_size)
+  validate_generator = getDataGenerator("data/validation", img_width, img_height, batch_size)
   #Initalise a model
   model = ConvNet((img_width,img_height,3))
   #Fit the data to the model
   model.fit_generator(train_generator, steps_per_epoch= (40 // batch_size), epochs=10 )
+  model.evaluate_generator(validate_generator)
 
 if __name__ == '__main__':
   main()
