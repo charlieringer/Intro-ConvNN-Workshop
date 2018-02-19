@@ -8,3 +8,9 @@ This network is train to classify images as either A Dell or Adele. The data set
 - Python 3
 - Keras
 - Tensorflow (installed automatically with Keras)
+
+# Usage
+Run `python Intro-ConvNN-Workshop.py` in your terminal. It will train (takes about 10-12 seconds on a MacBook Pro) and then test (takes a few seconds) and provide you with an accuracy score for how good it is at classifiying Adelle and A Dell. 
+
+# Future
+From me? nothing. From you? hopefully you will take this code, edit it, make it better and turn it in to something special. 
